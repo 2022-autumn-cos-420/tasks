@@ -20,7 +20,12 @@ function App(): JSX.Element {
                     <li>Feed images into DreamBooth Stable Diffusion</li>
                 </ul>
                 <div>
-                    <Button onClick={() => alert("Jim")}>
+                    <Button
+                        onClick={() => {
+                            alert("Jim");
+                            console.log("Hello World");
+                        }}
+                    >
                         Click to say your name (prototype)
                     </Button>
                 </div>
