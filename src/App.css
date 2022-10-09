@@ -29,12 +29,23 @@
     color: #61dafb;
 }
 
-.container {
-    width: 50%;
+.container:after {
+    content: "";
+    clear: both;
 }
 
-.container ul {
+.column ul {
     text-align: left;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    width: 50%;
+}
+.Image {
+    max-height: 100%;
+    max-width: 100%;
 }
 
 @keyframes App-logo-spin {
