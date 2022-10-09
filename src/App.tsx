@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 import "./App.css";
 
 function App(): JSX.Element {
@@ -18,6 +19,11 @@ function App(): JSX.Element {
                     <li>Convert images to a standardized size</li>
                     <li>Feed images into DreamBooth Stable Diffusion</li>
                 </ul>
+                <div>
+                    <Button onClick={() => alert("Jim")}>
+                        Click to say your name (prototype)
+                    </Button>
+                </div>
             </div>
             <p>Hello World, Troy Schotter following tutorial for COS420</p>
         </div>
