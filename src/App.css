@@ -47,6 +47,11 @@
     max-height: 100%;
     max-width: 100%;
 }
+.Rectangle {
+    width: 100px;
+    height: 20px;
+    background-color: blue;
+}
 
 @keyframes App-logo-spin {
     from {
