@@ -59,7 +59,11 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    let newNames: string[] = [];
+    questions.forEach((obj: Question) => {
+        newNames.push(obj.name);
+    });
+    return newNames;
 }
 
 /***
