@@ -6,7 +6,7 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    let newQuestions: Question[] = questions.filter((obj: Question) => {
+    const newQuestions: Question[] = questions.filter((obj: Question) => {
         if (obj.published == true) return obj;
     });
     //console.log(newQuestions);
@@ -19,7 +19,11 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const newQuestions: Question[] = questions.filter((obj: Question) => {
+        if (!(obj.options.length == 0 && obj.body == "" && obj.expected == ""))
+            return obj;
+    });
+    return newQuestions;
 }
 
 /***
