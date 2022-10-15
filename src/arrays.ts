@@ -101,7 +101,6 @@ export function makeMath(addends: number[]): string {
         finalString = finalString.concat(x.toString() + "+");
     });
     finalString = sum.toString().concat("=" + finalString.slice(0, -1));
-    console.log(finalString);
     return finalString;
 }
 
@@ -115,5 +114,15 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    let haveNeg = false;
+    let sum = 0;
+    let newValues = [...values];
+    for (let i = 0; i < newValues.length; i++) {
+        if (!haveNeg && newValues[i] < 0) {
+            newValues.splice(i + 1, 0, sum);
+            haveNeg = true;
+        } else sum += newValues[i];
+    }
+    if (!haveNeg) newValues = [...newValues, sum];
+    return newValues;
 }
