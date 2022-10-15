@@ -6,7 +6,11 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    let newQuestions: Question[] = questions.filter((obj: Question) => {
+        if (obj.published == true) return obj;
+    });
+    //console.log(newQuestions);
+    return newQuestions;
 }
 
 /**
