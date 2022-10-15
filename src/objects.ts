@@ -43,6 +43,10 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+    if (question.type == "short_answer_question") return true;
+    for (let i = 0; i < question.options.length; i++) {
+        if (question.options[i] == answer) return true;
+    }
     return false;
 }
 
