@@ -34,7 +34,13 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    let tempQuestion: Question | null = null;
+    questions.forEach((obj: Question) => {
+        if (id == obj.id) {
+            tempQuestion = obj;
+        }
+    });
+    return tempQuestion;
 }
 
 /**
