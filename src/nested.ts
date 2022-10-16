@@ -154,7 +154,16 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    if (questions.length == 0) return true;
+    const type: string = questions[0].type;
+    let same = true;
+    questions.forEach((obj: Question) => {
+        if (obj.type != type) {
+            same = false;
+            return;
+        }
+    });
+    return same;
 }
 
 /***
