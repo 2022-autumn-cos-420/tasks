@@ -243,7 +243,21 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const newArray: Question[] = questions.map((obj: Question) => ({
+        ...obj,
+        options:
+            obj.id == targetId
+                ? targetOptionIndex == -1
+                    ? [...obj.options, newOption]
+                    : obj.options.map((value: string, i: number) => {
+                          if (i == targetOptionIndex) {
+                              return newOption;
+                          }
+                          return value;
+                      })
+                : [...obj.options]
+    }));
+    return newArray;
 }
 
 /***
