@@ -35,12 +35,10 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    let tempQuestion: Question | null = null;
-    questions.forEach((obj: Question) => {
-        if (id == obj.id) {
-            tempQuestion = obj;
-        }
-    });
+    const tempQuestion = questions.find(
+        (obj: Question): boolean => obj.id == id
+    );
+    if (tempQuestion == undefined) return null;
     return tempQuestion;
 }
 
@@ -60,10 +58,7 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    let newNames: string[] = [];
-    questions.forEach((obj: Question) => {
-        newNames.push(obj.name);
-    });
+    const newNames = questions.map((obj: Question): string => obj.name);
     return newNames;
 }
 
@@ -71,10 +66,10 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    let sum: number = 0;
-    questions.forEach((obj: Question) => {
-        sum += obj.points;
-    });
+    const sum: number = questions.reduce(
+        (total: number, obj: Question) => (total += obj.points),
+        0
+    );
     return sum;
 }
 
@@ -82,10 +77,11 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    let sum: number = 0;
-    questions.forEach((obj: Question) => {
-        if (obj.published) sum += obj.points;
-    });
+    const sum: number = questions.reduce(
+        (total: number, obj: Question) =>
+            obj.published ? (total += obj.points) : (total += 0),
+        0
+    );
     return sum;
 }
 
