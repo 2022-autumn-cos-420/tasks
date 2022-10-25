@@ -5,7 +5,14 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    const firstnum: number = numbers[0];
+    const lastnum: number = numbers[numbers.length - 1];
+    let bookEndnumbers = [firstnum, lastnum];
+
+    if (numbers.length === 0) {
+        bookEndnumbers = [];
+    }
+    return bookEndnumbers;
 }
 
 /**
@@ -13,7 +20,8 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const triplednums = numbers.map((num: number): number => num * 3);
+    return triplednums;
 }
 
 /**
@@ -21,7 +29,11 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const convertedIntegers = numbers.map((convert: string): number =>
+        isNaN(Number(convert)) === false ? Number(convert) : 0
+    );
+
+    return convertedIntegers;
 }
 
 /**
@@ -32,7 +44,14 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const convertedStrings = amounts.map((fixed: string): number =>
+        fixed[0] === "$" ? Number(fixed.substring(1)) : Number(fixed)
+    );
+
+    const fixedStrings = convertedStrings.map((num: number): number =>
+        isNaN(num) === false ? num : 0
+    );
+    return fixedStrings;
 };
 
 /**
@@ -41,7 +60,13 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const firstPass = messages.map((fixed: string): string =>
+        fixed[fixed.length - 1] === "!" ? fixed.toUpperCase() : fixed
+    );
+    const secondPass = firstPass.filter(
+        (fixed: string): boolean => fixed[fixed.length - 1] !== "?"
+    );
+    return secondPass;
 };
 
 /**
