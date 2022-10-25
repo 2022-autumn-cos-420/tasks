@@ -99,7 +99,18 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const addedNumbers = addends.join("+");
+    const sum = addends.reduce(
+        (currentSum: number, num: number) => currentSum + num,
+        0
+    );
+    let EquationString = sum.toString().concat("=", addedNumbers);
+    if (sum === 0 || isNaN(sum)) {
+        console.log("Test");
+        EquationString = EquationString.concat("0");
+        return EquationString;
+    }
+    return EquationString;
 }
 
 /**
