@@ -26,6 +26,9 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+    if (question.expected.toLowerCase() === answer.trim().toLowerCase()) {
+        return true;
+    }
     return false;
 }
 
