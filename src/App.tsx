@@ -6,6 +6,7 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
+<<<<<<< HEAD
                 <h1>
                     UD COS420
                     <Container>
@@ -39,6 +40,9 @@ function App(): JSX.Element {
                     Modified by EDaran
                 </h1>
                 <p>Hello World</p>
+=======
+                UM COS420 with React Hooks and TypeScript
+>>>>>>> upstream/task-nested
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
