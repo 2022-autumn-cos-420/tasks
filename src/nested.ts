@@ -62,7 +62,7 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
 export function getNames(questions: Question[]): string[] {
     const questionNames = questions.map(
         (question: Question): string => question.name
-    )
+    );
     return questionNames;
 }
 
@@ -70,7 +70,14 @@ export function getNames(questions: Question[]): string[] {
  * Consumes an array of questions and returns the sum total of all their points added together.
  */
 export function sumPoints(questions: Question[]): number {
-    return 0;
+    const pointList = questions.map(
+        (question: Question): number => question.points
+    );
+    const pointSum = pointList.reduce(
+        (currentTotal: number, points: number) => currentTotal + points,
+        0
+    );
+    return pointSum;
 }
 
 /***
