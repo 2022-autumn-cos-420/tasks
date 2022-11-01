@@ -256,7 +256,23 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const newmatchingIndex = questions.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    const optionsList = [...questions[newmatchingIndex].options];
+
+    if (targetOptionIndex === -1) {
+        optionsList.push(newOption);
+    } else {
+        optionsList.splice(targetOptionIndex, 1, newOption);
+    }
+    const newQuestion = {
+        ...questions[newmatchingIndex],
+        options: [...optionsList]
+    };
+    const newduplicateArray = [...questions];
+    newduplicateArray.splice(newmatchingIndex, 1, newQuestion);
+    return newduplicateArray;
 }
 
 /***
