@@ -228,7 +228,16 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const matchingIndex = questions.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    const newQuestion = { ...questions[matchingIndex], type: newQuestionType };
+    if (newQuestionType !== "multiple_choice_question") {
+        newQuestion.options = [];
+    }
+    const duplicateArray = [...questions];
+    duplicateArray.splice(matchingIndex, 1, newQuestion);
+    return duplicateArray;
 }
 
 /**
