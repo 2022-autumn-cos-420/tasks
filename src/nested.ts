@@ -207,7 +207,13 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const matchingIndex = questions.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    const newQuestion = { ...questions[matchingIndex], name: newName };
+    const duplicateArray = [...questions];
+    duplicateArray.splice(matchingIndex, 1, newQuestion);
+    return duplicateArray;
 }
 
 /***
