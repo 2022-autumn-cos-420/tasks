@@ -1,6 +1,18 @@
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
+interface Question {
+    id: number;
+    name: string;
+    body: string;
+    type: QuestionType;
+    options: string[];
+    expected: string;
+    points: number;
+    published: boolean;
+**/
+
+/**
  * Create a new blank question with the given `id`, `name`, and `type. The `body` and
  * `expected` should be empty strings, the `options` should be an empty list, the `points`
  * should default to 1, and `published` should default to false.
@@ -10,7 +22,17 @@ export function makeBlankQuestion(
     name: string,
     type: QuestionType
 ): Question {
-    return {};
+    const question: Question = {
+        id: id,
+        name: name,
+        body: "",
+        type: type,
+        options: [],
+        expected: "",
+        points: 1,
+        published: false
+    };
+    return question;
 }
 
 /**
