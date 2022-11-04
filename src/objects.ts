@@ -94,9 +94,9 @@ export function toMarkdown(question: Question): string {
     let str: string = "# " + question.name + "\n" + question.body;
     if (question.type === "multiple_choice_question") {
         const options = question.options.map(
-            (str: string): string => "\n" + str
+            (str: string): string => "\n- " + str
         );
-        str = str + options;
+        str = str + options.join("");
     }
     console.log(str);
     return str;
@@ -166,5 +166,12 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    return contentQuestion;
+    const newQuestion = {
+        ...contentQuestion,
+        published: false,
+        points: points,
+        id: id,
+        name: name
+    };
+    return newQuestion;
 }
